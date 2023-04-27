@@ -26,10 +26,10 @@ def res_block(inputlayer,kernelnum,name=None):
     conv1 = BatchNormalization()(conv1)
     conv1 = Activation('relu')(conv1)
     conv2 = Conv2D(kernelnum, 3, padding='same', kernel_initializer='he_normal')(conv1)
-    conv2 = BatchNormalization()(conv2)
-    conv2 = Activation('relu')(conv2)  
+    conv2 = BatchNormalization()(conv2)  
     if name:        
         out = add([conv, conv2],name=name)
+        out = Activation('relu')(out)
     else:
         out = add([conv, conv2])
     return out
